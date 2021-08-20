@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Loop</title>
+    <style>
+        table th, table td {padding: 5px;}
+        .row  {
+            font-style: italic;
+        }
+        .even-row {
+            color: black;
+        }
+        .odd-row {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>Cars list</h1>
+<table border="1">
+    <tr>
+        <th>Model</th>
+        <th>Series</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="Car, state : ${list}"
+        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+        <td th:utext="${Car.getModel()}">Model</td>
+        <td th:utext="${Car.getSeries()}">Series</td>
+        <td th:utext="${Car.getColor()}">Color</td>
+    </tr>
+
+</table>
+</body>
+</html>
